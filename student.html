@@ -6,6 +6,13 @@
 </head>
 
 <body>
+    <script>
+const role = localStorage.getItem("userRole");
+
+if (!role) {
+    window.location.href = "login.html";
+}
+</script>
 
 <div class="main center">
 
