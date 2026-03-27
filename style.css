@@ -186,29 +186,15 @@ tr:hover {
     border-radius: 12px;
     margin-top: 15px;
 }
-/* Chart container */
-.chart-box {
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    margin-top: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
 
-/* Improve sidebar title */
-.sidebar h2 {
-    margin-bottom: 30px;
-    font-size: 22px;
-}
 
-/* Improve cards for dashboard */
-.cards {
+.dashboard .cards {
     display: flex;
     gap: 25px;
     margin-top: 20px;
 }
 
-.card {
+.dashboard .card {
     flex: 1;
     background: #ffffff;
     color: #1d3557;
@@ -218,14 +204,23 @@ tr:hover {
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-.card h3 {
+.dashboard .card h3 {
     font-size: 16px;
     margin-bottom: 10px;
     color: #6c757d;
 }
 
-.card p {
+.dashboard .card p {
     font-size: 28px;
     font-weight: bold;
     color: #457b9d;
+}
+
+/* Chart container */
+.chart-box {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
