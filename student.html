@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Portal</title>
+    <title>Student Check-in</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="main">
+<div class="main center">
 
-<h1>Daily Mental Check-in</h1>
-<p class="subtext">Complete your daily check-in in less than 1 minute</p>
+    <h1>Daily Check-in 🌿</h1>
+    <p class="subtext">Take a moment for yourself. This will only take a minute.</p>
 
-<label>Stress Level (1-5)</label>
-<input type="number">
+    <div class="checkin-box">
 
-<label>Sleep Hours</label>
-<input type="number">
+        <label>How stressed do you feel today?</label>
+        <input type="number" min="1" max="5">
 
-<label>Focus Level</label>
-<input type="number">
+        <label>How well did you sleep last night?</label>
+        <input type="number" placeholder="Hours of sleep">
 
-<label>Mood</label>
-<input type="text">
+        <label>How focused were you today?</label>
+        <input type="number" min="1" max="5">
 
-<br><br>
-<button onclick="submitCheckin()">Submit</button>
+        <label>What’s your mood right now?</label>
+        <input type="text" placeholder="Happy, tired, anxious...">
+
+        <button onclick="submitCheckin()">Check in 💙</button>
+
+    </div>
 
 </div>
 
