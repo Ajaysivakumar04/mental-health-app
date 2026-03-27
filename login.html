@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - MindCare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="main center">
+    <h1>Welcome to MindCare</h1>
+    <p class="subtext">Login to continue</p>
+
+    <div class="form-group">
+        <label>Name</label><br>
+        <input type="text" id="name" placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+        <label>Select Role</label><br>
+        <select id="role">
+            <option value="student">Student</option>
+            <option value="counsellor">Counsellor</option>
+            <option value="peer">Peer Support</option>
+        </select>
+    </div>
+
+    <br>
+    <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login() {
+    const name = document.getElementById("name").value;
+    const role = document.getElementById("role").value;
+
+    if (!name) {
+        alert("Please enter your name");
+        return;
+    }
+
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userRole", role);
+
+    if (role === "student") {
+        window.location.href = "student.html";
+    } else if (role === "counsellor") {
+        window.location.href = "counsellor.html";
+    } else {
+        window.location.href = "peer.html";
+    }
+}
+</script>
+
+</body>
+</html>
