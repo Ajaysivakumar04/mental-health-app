@@ -6,9 +6,10 @@
 </head>
 
 <body>
-    <script>
-const role = localStorage.getItem("userRole");
 
+<!-- 🔐 PROTECTION -->
+<script>
+const role = localStorage.getItem("userRole");
 if (!role) {
     window.location.href = "login.html";
 }
@@ -17,28 +18,58 @@ if (!role) {
 <div class="main center">
 
     <h1>Daily Check-in 🌿</h1>
+    <p>Welcome, <span id="username"></span></p>
     <p class="subtext">Take a moment for yourself. This will only take a minute.</p>
 
     <div class="checkin-box">
 
-        <label>How stressed do you feel today?</label>
-        <input type="number" min="1" max="5">
+        <div class="form-group">
+            <label>How stressed do you feel today?</label><br>
+            <input type="number" min="1" max="5">
+        </div>
 
-        <label>How well did you sleep last night?</label>
-        <input type="number" placeholder="Hours of sleep">
+        <div class="form-group">
+            <label>How well did you sleep last night?</label><br>
+            <input type="number" placeholder="Hours of sleep">
+        </div>
 
-        <label>How focused were you today?</label>
-        <input type="number" min="1" max="5">
+        <div class="form-group">
+            <label>How focused were you today?</label><br>
+            <input type="number" min="1" max="5">
+        </div>
 
-        <label>What’s your mood right now?</label>
-        <input type="text" placeholder="Happy, tired, anxious...">
+        <div class="form-group">
+            <label>What’s your mood right now?</label><br>
+            <input type="text" placeholder="Happy, tired, anxious...">
+        </div>
 
+        <br>
         <button onclick="submitCheckin()">Check in 💙</button>
 
     </div>
 
+    <br>
+
+    <!-- 🚪 LOGOUT -->
+    <button onclick="logout()">Logout</button>
+
 </div>
 
 <script src="script.js"></script>
+
+<script>
+/* 👤 Username */
+const name = localStorage.getItem("userName");
+if (name) {
+    document.getElementById("username").innerText = name;
+}
+
+/* 🚪 Logout */
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
+
 </body>
 </html>
