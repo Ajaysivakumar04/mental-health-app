@@ -23,21 +23,39 @@ if (!role) {
 
     <div class="checkin-box">
 
+        <!-- Stress -->
         <div class="form-group">
             <label>How stressed do you feel today?</label><br>
-            <input type="number" min="1" max="5">
+            <select>
+                <option value="">Select (1-5)</option>
+                <option>1 😌</option>
+                <option>2 🙂</option>
+                <option>3 😐</option>
+                <option>4 😟</option>
+                <option>5 😣</option>
+            </select>
         </div>
 
+        <!-- Sleep -->
         <div class="form-group">
             <label>How well did you sleep last night?</label><br>
             <input type="number" placeholder="Hours of sleep">
         </div>
 
+        <!-- Focus -->
         <div class="form-group">
             <label>How focused were you today?</label><br>
-            <input type="number" min="1" max="5">
+            <select>
+                <option value="">Select (1-5)</option>
+                <option>1 😴</option>
+                <option>2 😕</option>
+                <option>3 😐</option>
+                <option>4 🙂</option>
+                <option>5 🔥</option>
+            </select>
         </div>
 
+        <!-- Mood -->
         <div class="form-group">
             <label>What’s your mood right now?</label><br>
             <input type="text" placeholder="Happy, tired, anxious...">
