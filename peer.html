@@ -7,38 +7,59 @@
 
 <body>
 
+<!-- 🔐 PROTECTION -->
+<script>
+const role = localStorage.getItem("userRole");
+if (!role) {
+    window.location.href = "login.html";
+}
+</script>
+
 <div class="main">
 
-    <h1>Peer Support </h1>
-    <p class="subtext">A safe space to share, listen, and support each other 💙</p>
+    <h1>Peer Support</h1>
+    <p>Welcome, <span id="username"></span></p>
+    <p class="subtext">Share your thoughts and support others anonymously</p>
 
-    <!-- Create Post -->
     <div class="form-group">
-        <textarea placeholder="What's on your mind today?" rows="3"></textarea>
+        <textarea placeholder="Share your thoughts..." rows="3"></textarea>
         <br><br>
-        <button onclick="post()">Share anonymously 💬</button>
-    </div>
-
-    <!-- Posts -->
-    <div class="post">
-        <p> I feel stressed about exams lately…</p>
-        <br>
-        <button>💬 Reply</button>
-        <button>🚩 Report</button>
+        <button onclick="post()">Post</button>
     </div>
 
     <div class="post">
-        <p>📚 Not able to focus while studying. It’s frustrating.</p>
-        <br>
-        <button>💬 Reply</button>
-        <button>🚩 Report</button>
+        <p>I feel stressed about exams</p>
+        <button>Reply</button>
+        <button>Report</button>
     </div>
+
+    <div class="post">
+        <p>Not able to focus while studying</p>
+        <button>Reply</button>
+        <button>Report</button>
+    </div>
+
+    <br>
+    <button onclick="logout()">Logout</button>
 
 </div>
 
 <script>
-function post(){
-    alert("Your post has been shared 💙");
+/* 👤 Username */
+const name = localStorage.getItem("userName");
+if (name) {
+    document.getElementById("username").innerText = name;
+}
+
+/* ✉️ Post */
+function post() {
+    alert("Post submitted!");
+}
+
+/* 🚪 Logout */
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
 }
 </script>
 
