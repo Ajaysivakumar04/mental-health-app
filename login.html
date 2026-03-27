@@ -8,25 +8,26 @@
 <body>
 
 <div class="main center">
-    <h1>Welcome to MindCare</h1>
-    <p class="subtext">Login to continue</p>
 
-    <div class="form-group">
-        <label>Name</label><br>
+    <h1>Welcome to MindCare 🌿</h1>
+    <p class="subtext">Take a breath… let’s get you started</p>
+
+    <div class="checkin-box">
+
+        <label>What should we call you?</label>
         <input type="text" id="name" placeholder="Enter your name">
-    </div>
 
-    <div class="form-group">
-        <label>Select Role</label><br>
+        <label style="margin-top:20px;">How would you like to continue?</label>
         <select id="role">
-            <option value="student">Student</option>
-            <option value="counsellor">Counsellor</option>
-            <option value="peer">Peer Support</option>
+            <option value="student">🧠 Student</option>
+            <option value="counsellor">🧑‍⚕️ Counsellor</option>
+            <option value="peer">🤝 Peer Support</option>
         </select>
+
+        <button onclick="login()">Continue 💙</button>
+
     </div>
 
-    <br>
-    <button onclick="login()">Login</button>
 </div>
 
 <script>
