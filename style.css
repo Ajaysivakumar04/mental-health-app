@@ -186,3 +186,46 @@ tr:hover {
     border-radius: 12px;
     margin-top: 15px;
 }
+/* Chart container */
+.chart-box {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Improve sidebar title */
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 22px;
+}
+
+/* Improve cards for dashboard */
+.cards {
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 1;
+    background: #ffffff;
+    color: #1d3557;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #6c757d;
+}
+
+.card p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #457b9d;
+}
