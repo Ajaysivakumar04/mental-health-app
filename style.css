@@ -205,3 +205,13 @@ h1 {
         width: 100%;
     }
 }
+
+button.liked {
+    background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+}
+
+.likedBy {
+    font-size: 13px;
+    margin-top: 5px;
+    color: #fff;
+}
