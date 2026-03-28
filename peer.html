@@ -7,10 +7,9 @@
 
 <body>
 
-<!-- 🔐 PROTECTION -->
 <script>
-const role = localStorage.getItem("userRole");
-if (!role) {
+const isLoggedIn = localStorage.getItem("loggedIn");
+if (!isLoggedIn) {
     window.location.href = "login.html";
 }
 </script>
@@ -19,169 +18,61 @@ if (!role) {
 
     <h1>Peer Support</h1>
     <p>Welcome, <span id="username"></span></p>
-    <p class="subtext">Share your thoughts and support others anonymously</p>
 
-    <!-- CREATE POST -->
     <div class="form-group">
-        <textarea id="postInput" placeholder="Share your thoughts..." rows="3"></textarea>
-        <br><br>
+        <textarea id="postInput"></textarea>
         <button onclick="post()">Post</button>
     </div>
 
-    <!-- POSTS -->
-    <div id="postsContainer">
-
-        <div class="post" data-id="1">
-            <p>I feel stressed about exams</p>
-            <button onclick="reply()">Reply</button>
-            <button onclick="report()">Report</button>
-            <button onclick="like(this)" class="like-btn">🤍 Like <span>0</span></button>
-            <p class="likedBy"></p>
-        </div>
-
-        <div class="post" data-id="2">
-            <p>Not able to focus while studying</p>
-            <button onclick="reply()">Reply</button>
-            <button onclick="report()">Report</button>
-            <button onclick="like(this)" class="like-btn">🤍 Like <span>0</span></button>
-            <p class="likedBy"></p>
-        </div>
-
+    <div class="post">
+        <p>I feel stressed about exams</p>
+        <button onclick="reply()">Reply</button>
+        <button onclick="report()">Report</button>
+        <button onclick="like(this)">🤍 Like <span>0</span></button>
+        <p class="likedBy"></p>
     </div>
 
-    <br>
     <button onclick="logout()">Logout</button>
 
 </div>
 
 <script>
+document.getElementById("username").innerText =
+    localStorage.getItem("userName");
 
-/* 👤 Username */
-const name = localStorage.getItem("userName");
-if (name) {
-    document.getElementById("username").innerText = name;
-}
-
-/* 📝 Post */
 function post() {
-    const input = document.getElementById("postInput");
-    const text = input.value;
-
-    if (!text) {
-        alert("Write something first!");
-        return;
-    }
-
-    const container = document.getElementById("postsContainer");
-    const id = Date.now();
-
-    const newPost = document.createElement("div");
-    newPost.className = "post";
-    newPost.setAttribute("data-id", id);
-
-    newPost.innerHTML = `
-        <p>${text}</p>
-        <button onclick="reply()">Reply</button>
-        <button onclick="report()">Report</button>
-        <button onclick="like(this)" class="like-btn">🤍 Like <span>0</span></button>
-        <p class="likedBy"></p>
-    `;
-
-    container.prepend(newPost);
-    input.value = "";
+    alert("Posted!");
 }
 
-/* 💬 Reply */
 function reply() {
-    const message = prompt("Type your reply:");
-    if (message) {
-        alert("Reply sent: " + message);
-    }
+    alert("Reply sent!");
 }
 
-/* 🚨 Report */
 function report() {
-    const confirmReport = confirm("Are you sure to report this post?");
-    if (confirmReport) {
-        alert("Reported successfully!");
-    }
+    alert("Reported!");
 }
 
-/* ❤️ LIKE SYSTEM WITH STORAGE */
 function like(btn) {
+    let count = btn.querySelector("span");
+    let val = parseInt(count.innerText);
 
-    const post = btn.closest(".post");
-    const postId = post.getAttribute("data-id");
-    const user = localStorage.getItem("userName");
-
-    let likesData = JSON.parse(localStorage.getItem("likes")) || {};
-
-    if (!likesData[postId]) {
-        likesData[postId] = [];
-    }
-
-    let users = likesData[postId];
-    let countSpan = btn.querySelector("span");
-
-    if (users.includes(user)) {
-        // UNLIKE
-        users = users.filter(u => u !== user);
+    if (btn.classList.contains("liked")) {
         btn.classList.remove("liked");
+        val--;
+        btn.innerHTML = `🤍 Like <span>${val}</span>`;
     } else {
-        // LIKE
-        users.push(user);
         btn.classList.add("liked");
-    }
-
-    likesData[postId] = users;
-    localStorage.setItem("likes", JSON.stringify(likesData));
-
-    updatePost(post, btn, users);
-}
-
-/* 🔄 UPDATE UI */
-function updatePost(post, btn, users) {
-
-    let count = users.length;
-    let countSpan = btn.querySelector("span");
-
-    countSpan.innerText = count;
-
-    if (users.includes(localStorage.getItem("userName"))) {
-        btn.innerHTML = `❤️ Like <span>${count}</span>`;
-    } else {
-        btn.innerHTML = `🤍 Like <span>${count}</span>`;
-    }
-
-    // Show who liked
-    let likedText = post.querySelector(".likedBy");
-    if (count > 0) {
-        likedText.innerText = "Liked by: " + users.join(", ");
-    } else {
-        likedText.innerText = "";
+        val++;
+        btn.innerHTML = `❤️ Like <span>${val}</span>`;
     }
 }
 
-/* 🔁 LOAD LIKES ON PAGE LOAD */
-window.onload = function() {
-    let likesData = JSON.parse(localStorage.getItem("likes")) || {};
-
-    document.querySelectorAll(".post").forEach(post => {
-        const postId = post.getAttribute("data-id");
-        const btn = post.querySelector(".like-btn");
-
-        if (likesData[postId]) {
-            updatePost(post, btn, likesData[postId]);
-        }
-    });
-}
-
-/* 🚪 Logout */
 function logout() {
-    localStorage.clear();
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userRole");
     window.location.href = "login.html";
 }
-
 </script>
 
 </body>
