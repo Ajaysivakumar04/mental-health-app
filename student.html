@@ -9,8 +9,8 @@
 
 <!-- 🔐 PROTECTION -->
 <script>
-const role = localStorage.getItem("userRole");
-if (!role) {
+const isLoggedIn = localStorage.getItem("loggedIn");
+if (!isLoggedIn) {
     window.location.href = "login.html";
 }
 </script>
@@ -19,15 +19,12 @@ if (!role) {
 
     <h1>Daily Check-in 🌿</h1>
     <p>Welcome, <span id="username"></span></p>
-    <p class="subtext">Take a moment for yourself. This will only take a minute.</p>
 
     <div class="checkin-box">
 
-        <!-- Stress -->
         <div class="form-group">
-            <label>How stressed do you feel today?</label><br>
+            <label>Stress Level</label>
             <select>
-                <option value="">Select (1-5)</option>
                 <option>1 😌</option>
                 <option>2 🙂</option>
                 <option>3 😐</option>
@@ -36,17 +33,14 @@ if (!role) {
             </select>
         </div>
 
-        <!-- Sleep -->
         <div class="form-group">
-            <label>How well did you sleep last night?</label><br>
-            <input type="number" placeholder="Hours of sleep">
+            <label>Sleep Hours</label>
+            <input type="number">
         </div>
 
-        <!-- Focus -->
         <div class="form-group">
-            <label>How focused were you today?</label><br>
+            <label>Focus Level</label>
             <select>
-                <option value="">Select (1-5)</option>
                 <option>1 😴</option>
                 <option>2 😕</option>
                 <option>3 😐</option>
@@ -55,36 +49,32 @@ if (!role) {
             </select>
         </div>
 
-        <!-- Mood -->
         <div class="form-group">
-            <label>What’s your mood right now?</label><br>
-            <input type="text" placeholder="Happy, tired, anxious...">
+            <label>Mood</label>
+            <input type="text">
         </div>
 
-        <br>
-        <button onclick="submitCheckin()">Check in 💙</button>
+        <button onclick="submitCheckin()">Submit</button>
 
     </div>
 
     <br>
-
-    <!-- 🚪 LOGOUT -->
     <button onclick="logout()">Logout</button>
 
 </div>
 
-<script src="script.js"></script>
-
 <script>
-/* 👤 Username */
-const name = localStorage.getItem("userName");
-if (name) {
-    document.getElementById("username").innerText = name;
+document.getElementById("username").innerText =
+    localStorage.getItem("userName");
+
+function submitCheckin() {
+    alert("Check-in submitted!");
 }
 
-/* 🚪 Logout */
 function logout() {
-    localStorage.clear();
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userRole");
     window.location.href = "login.html";
 }
 </script>
